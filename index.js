@@ -30,7 +30,15 @@ app.post("/send",async(req,res)=>{
         from:`${nickname || "Anonymous"} <${process.env.EMAIL_SENDER}`,
         to,
         subject:"You Have received a anonymous message",
-        text:message
+        text:message,
+        html: `
+            <div style="font-family: sans-serif; padding: 10px;">
+            <h2 style="color: #444;">You've received an anonymous message</h2>
+            <p style="font-size: 16px;">${message}</p>
+            <hr />
+            <p style="font-size: 12px; color: #888;">This message was sent anonymously via AnonMailer App</p>
+            </div>
+        `
     };
 
     try{
